@@ -99,8 +99,12 @@ class ViewEnhancer {
             if (a.msg.indexOf(Const.TO_ALL_MARK) === 0) {
                 a.mn = true;
             }
-            
-            return this.getMessagePanelOld(a, b);
+            let result = this.getMessagePanelOld(a, b);
+            if (a.mn === true) {
+                result = result.replace('class="_message timelineMessage"', 'class="_message timelineMessage timelineMessage--mention"');
+            }
+            console.log(a, b, result);
+            return result;
         };
     }
 }
